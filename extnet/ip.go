@@ -87,6 +87,7 @@ func IsPublicIP(IP net.IP) bool {
 //}
 
 func GetPublicIp() (string,error) {
+	//有点慢
 	resp, err := http.Get("http://myexternalip.com/raw")
 	if err != nil {
 		return "", err
