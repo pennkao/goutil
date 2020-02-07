@@ -8,12 +8,6 @@ import (
 )
 
 func Download(filename, url string, headers map[string]string) (int64, error){
-	output, err := os.Create(filename)
-	if err != nil {
-		return 0, err
-	}
-	defer output.Close()
-
 	client := &http.Client{}
 	req, err := http.NewRequest("GET", url, nil)
 
@@ -27,16 +21,28 @@ func Download(filename, url string, headers map[string]string) (int64, error){
 	}
 	defer resp.Body.Close()
 
+	output, err := os.Create(filename)
+	if err != nil {
+		return 0, err
+	}
+	defer output.Close()
+
 	size, err := io.Copy(output, resp.Body)
 	if err != nil {
 		return 0, err
 	}
+
 	return size, nil
 }
 
 
 func Wget(filename, url string) (int64, error) {
-	_, err := exec.Command("/usr/local/bin/wget", url, "-O", filename).Output()
+	//p := os.Getenv("PATH")
+	wget, err := exec.LookPath("wget")
+	if err != nil {
+		return 0, err
+	}
+	_, err = exec.Command(wget, url, "-O", filename).Output()
 	if err != nil {
 		return 0, err
 	}

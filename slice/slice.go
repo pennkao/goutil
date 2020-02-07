@@ -1,6 +1,55 @@
 package slice
 
-func SliceContains(sl []interface{}, v interface{}) bool {
+import (
+	"reflect"
+	"strconv"
+	"strings"
+)
+
+func Contain(sl interface{}, v interface{}) bool {
+	sType := reflect.TypeOf(sl)
+	sValue := reflect.ValueOf(sl)
+	vValue := reflect.ValueOf(v)
+	if sType.Kind() != reflect.Slice {
+		return false
+	}
+	if sValue.Index(0).Kind() != vValue.Kind() {
+		return false
+	}
+
+	switch sl.(type) {
+	case []int:
+		vv := v.(int)
+		vsl := sl.([]int)
+		for _, vs := range vsl {
+			if vv == vs {
+				return true
+			}
+		}
+	case []int64:
+		vv := v.(int64)
+		vsl := sl.([]int64)
+		for _, vs := range vsl {
+			if vv == vs {
+				return true
+			}
+		}
+
+	case []string:
+		vv := v.(string)
+		vsl := sl.([]string)
+		for _, vs := range vsl {
+			if vv == vs {
+				return true
+			}
+		}
+	default:
+		return false
+	}
+	return false
+}
+
+func ContainInt(sl []int, v int) bool {
 	for _, vv := range sl {
 		if vv == v {
 			return true
@@ -9,7 +58,7 @@ func SliceContains(sl []interface{}, v interface{}) bool {
 	return false
 }
 
-func SliceContainsInt(sl []int, v int) bool {
+func ContainInt64(sl []int64, v int64) bool {
 	for _, vv := range sl {
 		if vv == v {
 			return true
@@ -18,16 +67,7 @@ func SliceContainsInt(sl []int, v int) bool {
 	return false
 }
 
-func SliceContainsInt64(sl []int64, v int64) bool {
-	for _, vv := range sl {
-		if vv == v {
-			return true
-		}
-	}
-	return false
-}
-
-func SliceContainsString(sl []string, v string) bool {
+func ContainString(sl []string, v string) bool {
 	for _, vv := range sl {
 		if vv == v {
 			return true
@@ -37,112 +77,119 @@ func SliceContainsString(sl []string, v string) bool {
 }
 
 // SliceMerge merges interface slices to one slice.
-func SliceMerge(slice1, slice2 []interface{}) (c []interface{}) {
+func Merge(slice1, slice2 []interface{}) (c []interface{}) {
 	c = append(slice1, slice2...)
 	return
 }
 
-func SliceMergeInt(slice1, slice2 []int) (c []int) {
+func MergeInt(slice1, slice2 []int) (c []int) {
 	c = append(slice1, slice2...)
 	return
 }
 
-func SliceMergeInt64(slice1, slice2 []int64) (c []int64) {
+func MergeInt64(slice1, slice2 []int64) (c []int64) {
 	c = append(slice1, slice2...)
 	return
 }
 
-func SliceMergeString(slice1, slice2 []string) (c []string) {
+func MergeString(slice1, slice2 []string) (c []string) {
 	c = append(slice1, slice2...)
 	return
 }
 
-func SliceUniqueInt64(s []int64) []int64 {
-	size := len(s)
-	if size == 0 {
-		return []int64{}
-	}
-
-	m := make(map[int64]bool)
-	for i := 0; i < size; i++ {
-		m[s[i]] = true
-	}
-
-	realLen := len(m)
-	ret := make([]int64, realLen)
-
-	idx := 0
-	for key := range m {
-		ret[idx] = key
-		idx++
-	}
-
-	return ret
-}
-
-func SliceUniqueInt(s []int) []int {
+func UniqueInt(s []int) []int {
 	size := len(s)
 	if size == 0 {
 		return []int{}
 	}
 
-	m := make(map[int]bool)
-	for i := 0; i < size; i++ {
-		m[s[i]] = true
+	ret := make([]int, 0, size)
+	m := make(map[int]bool, size)
+	for _, v := range s {
+		if _, ok := m[v]; !ok{
+			ret = append(ret, v)
+			m[v] = true
+		}
 	}
-
-	realLen := len(m)
-	ret := make([]int, realLen)
-
-	idx := 0
-	for key := range m {
-		ret[idx] = key
-		idx++
-	}
-
 	return ret
 }
 
-func SliceUniqueString(s []string) []string {
+func UniqueInt64(s []int64) []int64 {
+	size := len(s)
+	if size == 0 {
+		return []int64{}
+	}
+
+	ret := make([]int64, 0, size)
+	m := make(map[int64]bool, size)
+	for _, v := range s {
+		if _, ok := m[v]; !ok{
+			ret = append(ret, v)
+			m[v] = true
+		}
+	}
+	return ret
+}
+
+func UniqueString(s []string) []string {
 	size := len(s)
 	if size == 0 {
 		return []string{}
 	}
 
-	m := make(map[string]bool)
-	for i := 0; i < size; i++ {
-		m[s[i]] = true
+	ret := make([]string, 0, size)
+	m := make(map[string]bool, size)
+	for _, v := range s {
+		if _, ok := m[v]; !ok{
+			ret = append(ret, v)
+			m[v] = true
+		}
 	}
-
-	realLen := len(m)
-	ret := make([]string, realLen)
-
-	idx := 0
-	for key := range m {
-		ret[idx] = key
-		idx++
-	}
-
 	return ret
 }
 
-func SliceSumInt64(intslice []int64) (sum int64) {
-	for _, v := range intslice {
+func SumInt64(sl []int64) (sum int64) {
+	for _, v := range sl {
 		sum += v
 	}
 	return
 }
 
-func SliceSumInt(intslice []int) (sum int) {
-	for _, v := range intslice {
+func SumInt(sl []int) (sum int) {
+	for _, v := range sl {
 		sum += v
 	}
 	return
 }
 
-func SliceSumFloat64(intslice []float64) (sum float64) {
-	for _, v := range intslice {
+func SumFloat64(sl []float64) (sum float64) {
+	for _, v := range sl {
 		sum += v
 	}
 	return
 }
+
+//int 转 string
+func IntToInString(list []int) string {
+	s := make([]string, 0, len(list))
+
+	for _,v := range list {
+		s = append(s, strconv.Itoa(v))
+	}
+	return strings.Join(s, ",")
+}
+
+//int64 change string
+func Int64ToInString(list []int64) string {
+	s := make([]string, 0, len(list))
+	for _, o := range list {
+		s = append(s, strconv.FormatInt(o, 10))
+	}
+	return strings.Join(s, ",")
+}
+
+//string arr change int
+func ToString(s []string) string {
+	return `"` + strings.Join(s, `","`) + `"`
+}
+

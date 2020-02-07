@@ -1,4 +1,4 @@
-package curl
+package exthttp
 
 import (
 	"fmt"

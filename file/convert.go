@@ -4,7 +4,7 @@ import (
 	"strconv"
 )
 
-func FileToUint64(file string) (uint64, error) {
+func ToUint64(file string) (uint64, error) {
 	content, err := ReadFileToStringNoLn(file)
 	if err != nil {
 		return 0, err
@@ -17,7 +17,7 @@ func FileToUint64(file string) (uint64, error) {
 	return ret, nil
 }
 
-func FileToInt64(file string) (int64, error) {
+func ToInt64(file string) (int64, error) {
 	content, err := ReadFileToStringNoLn(file)
 	if err != nil {
 		return 0, err

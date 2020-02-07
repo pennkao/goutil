@@ -1,11 +1,11 @@
-package curl
+package exthttp
 
 import (
 	"io/ioutil"
 	"net/http"
 )
 
-func HttpGet(url string) (reply []byte, err error) {
+func Get(url string) (reply []byte, err error) {
 	resp, err := http.Get(url)
 	if err != nil {
 		return
