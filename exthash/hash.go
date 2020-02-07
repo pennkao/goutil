@@ -1,4 +1,4 @@
-package hash
+package exthash
 
 import (
 	"crypto/md5"

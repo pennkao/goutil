@@ -3,9 +3,9 @@
 
 # 安装
 ```
-go get -u github.com/ThreeKing2018/goutil
+go get -u github.com/pennkao/goutil
 ```
-
+//todo ip
 
 ## 目录说明
 - 一个类别一个文件夹,文件夹里必含一个测试文件

@@ -1,4 +1,4 @@
-package strtool
+package extstrings
 
 import (
 	"fmt"
