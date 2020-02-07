@@ -1,4 +1,4 @@
-package paginator
+package page
 
 import (
 	"math"

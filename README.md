@@ -40,16 +40,14 @@ go get -u github.com/pennkao/goutil
 
 
 ## 贡献来源
-> 一般来源于github和我们自己写的
+> 
 
 ### 部分来源名单
 
-- https://github.com/UlricQin/goutils
-- https://github.com/henrylee2cn/goutil/
-- https://github.com/wudaoluo/goutil
+
 
 
 ## 欢迎加入本团队
-> 我们正在打造一个一站式工具库<br/>实现快速开发,做到开箱即用<br/>方便大家,请多多支持,加个星吧
+> 
 
 
