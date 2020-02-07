@@ -5,9 +5,9 @@ import (
 	"fmt"
 )
 
-func TestGetPulicIP(t *testing.T) {
-	p := GetPulicIP()
-	fmt.Println(p)
+func TestGetPublicIp(t *testing.T) {
+	p, err:= GetPublicIp()
+	fmt.Println(p,err)
 }
 
 func TestLocalIPv4s(t *testing.T) {

@@ -1,7 +1,9 @@
 package extnet
 
 import (
+	"io/ioutil"
 	"net"
+	"net/http"
 	"strconv"
 	"strings"
 )
@@ -76,12 +78,23 @@ func IsPublicIP(IP net.IP) bool {
 //	return nil
 //}
 
-func GetPulicIP() string {
-	conn, _ := net.Dial("udp", "8.8.8.8:80")
-	defer conn.Close()
-	localAddr := conn.LocalAddr().String()
-	idx := strings.LastIndex(localAddr, ":")
-	return localAddr[0:idx]
+//func GetPulicIP() string {
+//	conn, _ := net.Dial("udp", "8.8.8.8:80")
+//	defer conn.Close()
+//	localAddr := conn.LocalAddr().String()
+//	idx := strings.LastIndex(localAddr, ":")
+//	return localAddr[0:idx]
+//}
+
+func GetPublicIp() (string,error) {
+	resp, err := http.Get("http://myexternalip.com/raw")
+	if err != nil {
+		return "", err
+	}
+	defer resp.Body.Close()
+	content, err := ioutil.ReadAll(resp.Body)
+
+	return string(content), err
 }
 
 func LocalIPv4s() ([]string, error) {
