@@ -2,11 +2,11 @@
 > 用于数值类型之间的转换
 
 ## 列表
-1. [int64转byte](byte.go)
-1. [byte 转 int64](integer.go)
-1. [string to int](integer.go)
-1. [int to int64](integer.go)
-1. [任意类型转int64](integer.go)
-1. [任意类型转换string](string.go)
+1. [AesEncrypt](aes.go)
+1. [AesDecrypt](aes.go)
+1. [DesEncrypt](des.go)
+1. [DesDecrypt](des.go)
+1. [PKCS5Padding](pkcs5.go)
+1. [PKCS5UnPadding](pkcs5.go)
 ## 导航
 - [首页](../README.md)

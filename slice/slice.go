@@ -6,6 +6,7 @@ import (
 	"strings"
 )
 
+//判断切片中是否存在v int int64 string
 func Contain(sl interface{}, v interface{}) bool {
 	sType := reflect.TypeOf(sl)
 	sValue := reflect.ValueOf(sl)
@@ -87,14 +88,35 @@ func MergeInt(slice1, slice2 []int) (c []int) {
 	return
 }
 
-func MergeInt64(slice1, slice2 []int64) (c []int64) {
-	c = append(slice1, slice2...)
-	return
+//无序高性能
+func HMergeInt(slice1, slice2 []int) []int {
+	if len(slice1) < len(slice2) {
+		return append(slice2, slice1...)
+	}
+	return append(slice1, slice2...)
 }
 
-func MergeString(slice1, slice2 []string) (c []string) {
-	c = append(slice1, slice2...)
-	return
+func MergeInt64(slice1, slice2 []int64) []int64 {
+	slice1 = append(slice1, slice2...)
+	return slice1
+}
+
+func HMergeInt64(slice1, slice2 []int64) []int64 {
+	if len(slice1) < len(slice2) {
+		return append(slice2, slice1...)
+	}
+	return append(slice1, slice2...)
+}
+
+func MergeString(slice1, slice2 []string) []string {
+	return append(slice1, slice2...)
+}
+
+func HMergeString(slice1, slice2 []string) []string {
+	if len(slice1) < len(slice2) {
+		return append(slice2, slice1...)
+	}
+	return append(slice1, slice2...)
 }
 
 func UniqueInt(s []int) []int {
@@ -186,10 +208,5 @@ func Int64ToInString(list []int64) string {
 		s = append(s, strconv.FormatInt(o, 10))
 	}
 	return strings.Join(s, ",")
-}
-
-//string arr change int
-func ToString(s []string) string {
-	return `"` + strings.Join(s, `","`) + `"`
 }
 

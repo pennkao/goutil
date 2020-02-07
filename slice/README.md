@@ -7,33 +7,21 @@ package main
 
 import (
 	"fmt"
-
-	"github.com/ThreeKing2018/goutil/hash"
+	"github.com/pennkao/goutil/slice"
 )
 
 func main() {
-	/* 字符串 */
-	// md5
-	md5 := hash.Md5String("111111")
-	fmt.Println(md5)
-	// sha1
-	sha1 := hash.Sha1String("111111")
-	fmt.Println(sha1)
+    
+    list1 := []int{1,2,3,4}
+    v1 := 1
+    r := slice.Contain(list1, v1)
+    fmt.Println(r) //true
 
-	/* 字节 */
-	// md5
-	md5 = hash.Md5Byte([]byte("111111"))
-	fmt.Println(md5)
-	// sha1
-	sha1 = hash.Sha1Byte([]byte("111111"))
-	fmt.Println(sha1)
+	s := []string{"c", "a", "b", "c", "a", "b"}
+	s = slice.UniqueString(s)
+	fmt.Println(s)  //[c a b]
 
-	/* 文件 */
-	md5, err := hash.Md5File("./test.txt")
-	if err != nil {
-		fmt.Println(err)
-	}
-	fmt.Println(md5)
+    
 }
 
 ```

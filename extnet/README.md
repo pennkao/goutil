@@ -8,7 +8,7 @@ package main
 import (
 	"fmt"
 
-	"github.com/ThreeKing2018/goutil/hash"
+	"github.com/pennkao/goutil/hash"
 )
 
 func main() {
