@@ -13,10 +13,10 @@ go get -u github.com/pennkao/goutil
 - 如array
 
 ```
- |- array
-        |- array.go      //核心文件
-        |- array_test.go //测试文件
-        |- readme.md     //说明文档
+ |- extnet
+        |- ip.go      //核心文件
+        |- ip_test.go //测试文件
+        |- README.md     //说明文档
 ```
 ## 包名
 - 如果与golang包冲突的,包名加ext
@@ -26,18 +26,18 @@ go get -u github.com/pennkao/goutil
 
 | 功能 | 包名 |  备注 |
 | :--- | :--- | :--- |
-| net扩展包 |[extnet](extnet/readme.md) | 网络扩展包 |
-| http扩展包 |[exthttp](exthttp/readme.md) | 网络扩展包 |
-| html扩展包 |[exthtml](exthtml/readme.md) | 网络扩展包 |
-| hash扩展包 |[exthash](exthash/readme.md) | 网络扩展包 |
-| strings扩展包 |[extstrings](extstrings/readme.md) | 网络扩展包 |
-| time扩展包 |[exttime](exttime/readme.md) | 网络扩展包 |
-| 数值转换 | [conv](conv/readme.md) | 操作数字等 |
-| 加密 | [encrypt](encrypt/readme.md) |  获取自定义时间格式等|
-| 文件操作 | [file](file) |  获取文件目录,读取,写等|
-| 分页操作 | [page](page) |  用于数据分页操作等|
-| slice操作 |[slice](slice/readme.md) | 网络扩展包 |
-| map操作 |[map](map/readme.md) | 网络扩展包 |
+| net扩展包 |[extnet](extnet/README.md) | 网络扩展包 |
+| http扩展包 |[exthttp](exthttp/README.md) | 网络扩展包 |
+| html扩展包 |[exthtml](exthtml/README.md) | 网络扩展包 |
+| hash扩展包 |[exthash](exthash/README.md) | 网络扩展包 |
+| strings扩展包 |[extstrings](extstrings/README.md) | 网络扩展包 |
+| time扩展包 |[exttime](exttime/README.md) | 网络扩展包 |
+| extmap操作 |[extmap](extmap/README.md) | 网络扩展包 |
+| 数值转换 | [conv](conv/README.md) | 操作数字等 |
+| 加密 | [encrypt](encrypt/README.md) |  获取自定义时间格式等|
+| 文件操作 | [file](file/README.md) |  获取文件目录,读取,写等|
+| 分页操作 | [page](page/README.md) |  用于数据分页操作等|
+| slice操作 |[slice](slice/README.md) | 网络扩展包 |
 | 目录操作 | [pwdtools](pwdtools/pwdtools.go) | 获取目录 |
 
 
