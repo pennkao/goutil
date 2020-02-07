@@ -12,6 +12,10 @@ go get -u github.com/pennkao/goutil
 - 可以使用go test测试
 - 如array
 
+## 包名
+- 如果与golang包冲突的,包名加ext
+- 例如:golang包time 命名exttime
+
 ```
  |- array
         |- array.go      //核心文件
