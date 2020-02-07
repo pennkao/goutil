@@ -26,14 +26,18 @@ go get -u github.com/pennkao/goutil
 
 | 功能 | 包名 |  备注 |
 | :--- | :--- | :--- |
+| net扩展包 |[extnet](extnet/readme.md) | 网络扩展包 |
+| http扩展包 |[exthttp](exthttp/readme.md) | 网络扩展包 |
+| html扩展包 |[exthtml](exthtml/readme.md) | 网络扩展包 |
+| hash扩展包 |[exthash](exthash/readme.md) | 网络扩展包 |
+| strings扩展包 |[extstrings](extstrings/readme.md) | 网络扩展包 |
+| time扩展包 |[exttime](exttime/readme.md) | 网络扩展包 |
 | 数值转换 | [conv](conv/readme.md) | 操作数字等 |
 | 加密 | [encrypt](encrypt/readme.md) |  获取自定义时间格式等|
 | 文件操作 | [file](file) |  获取文件目录,读取,写等|
 | 分页操作 | [page](page) |  用于数据分页操作等|
-| 字符串扩展 | [extstrings](extstrings) | 字符串操作|
-| 切片扩展 | [slice](slice) |  linux相关等|
-| 常用hash函数 | [hash](hash/README.md) |  string、byte、file 的hash值 包括md5 sha1 sha256 sha512 |
-| http包扩展 | [curl](curl/curl.go) |  curl get ,post 请求 |
+| slice操作 |[slice](slice/readme.md) | 网络扩展包 |
+| map操作 |[map](map/readme.md) | 网络扩展包 |
 | 目录操作 | [pwdtools](pwdtools/pwdtools.go) | 获取目录 |
 
 
