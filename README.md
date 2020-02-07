@@ -26,17 +26,15 @@ go get -u github.com/pennkao/goutil
 
 | 功能 | 包名 |  备注 |
 | :--- | :--- | :--- |
-| 数组操作 | [array](array) |  数组转换等|
-| 目录操作 | [pwdtools](pwdtools/pwdtools.go) | 获取目录 |
 | 数值转换 | [conv](conv/readme.md) | 操作数字等 |
-| 时间操作 | [exttime](exttime/readme.md) |  获取自定义时间格式等|
-| 文件操作 | [filetool](filetool) |  获取文件目录,读取,写等|
-| 格式化操作 | [formatter](formatter) |  如存储大小转换成可读的单位等|
+| 加密 | [encrypt](encrypt/readme.md) |  获取自定义时间格式等|
+| 文件操作 | [file](file) |  获取文件目录,读取,写等|
 | 分页操作 | [page](page) |  用于数据分页操作等|
-| 字符串操作 | [extstrings](extstrings) |  随机数,md5等|
-| 切片操作 | [slice](slice) |  linux相关等|
+| 字符串扩展 | [extstrings](extstrings) | 字符串操作|
+| 切片扩展 | [slice](slice) |  linux相关等|
 | 常用hash函数 | [hash](hash/README.md) |  string、byte、file 的hash值 包括md5 sha1 sha256 sha512 |
-| curl | [curl](curl/curl.go) |  curl get ,post 请求 |
+| http包扩展 | [curl](curl/curl.go) |  curl get ,post 请求 |
+| 目录操作 | [pwdtools](pwdtools/pwdtools.go) | 获取目录 |
 
 
 ## 贡献来源
