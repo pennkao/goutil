@@ -38,11 +38,11 @@ func Download(filename, url string, headers map[string]string) (int64, error){
 
 func Wget(filename, url string) (int64, error) {
 	//p := os.Getenv("PATH")
-	wget, err := exec.LookPath("wget")
+	wGet, err := exec.LookPath("wget")
 	if err != nil {
 		return 0, err
 	}
-	_, err = exec.Command(wget, url, "-O", filename).Output()
+	_, err = exec.Command(wGet, url, "-O", filename).Output()
 	if err != nil {
 		return 0, err
 	}
