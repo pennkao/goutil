@@ -70,7 +70,7 @@ func WordUpper(str string) string{
 		strArr = strings.Split(str, "_")
 	}
 	if len(strArr) < 1 {
-		return str
+		return Ucfirst(str)
 	}
 	for i, v := range strArr {
 		strArr[i] = Ucfirst(v)

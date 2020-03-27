@@ -26,6 +26,6 @@ func TestLcfirst(t *testing.T) {
 }
 
 func TestWordUpper(t *testing.T) {
-	v := WordUpper("abc_def")
+	v := WordUpper("weight")
 	fmt.Println(v)
 }
