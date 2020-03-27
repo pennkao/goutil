@@ -1,8 +1,8 @@
 package file
 
 import (
-	"testing"
 	"fmt"
+	"testing"
 )
 
 func TestDownload(t *testing.T) {

@@ -1,8 +1,8 @@
 package extnet
 
 import (
-	"testing"
 	"fmt"
+	"testing"
 )
 
 func TestGetPublicIp(t *testing.T) {

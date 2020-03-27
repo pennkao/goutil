@@ -3,10 +3,10 @@ package conv
 import (
 	"bytes"
 	"encoding/binary"
-	"fmt"
-	"strconv"
-	"reflect"
 	"encoding/hex"
+	"fmt"
+	"reflect"
+	"strconv"
 	"strings"
 )
 

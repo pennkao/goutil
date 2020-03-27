@@ -1,8 +1,8 @@
 package file
 
 import (
-	"testing"
 	"fmt"
+	"testing"
 )
 
 func TestToUint64(t *testing.T) {

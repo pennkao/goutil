@@ -1,8 +1,8 @@
 package page
 
 import (
-	"testing"
 	"fmt"
+	"testing"
 )
 
 func TestTest(t *testing.T) {
