@@ -23,3 +23,58 @@ func RandomString(length int) string {
 	}
 	return string(result)
 }
+
+func Ucfirst(str string) string {
+	if len(str) < 1 {
+		return str
+	}
+	strArr := []rune(str)
+	if len(strArr) < 1 {
+		return str
+	}
+
+	if strArr[0] >= 97 && strArr[0] <= 122 {
+		strArr[0] -= 32
+	}
+
+	return string(strArr)
+}
+
+func Lcfirst(str string) string {
+	if len(str) < 1 {
+		return str
+	}
+
+	strArr := []rune(str)
+	if len(strArr) < 1 {
+		return str
+	}
+
+	len := len(str)
+	if strArr[len-1] >= 97 && strArr[len-1] <= 122 {
+		strArr[len-1] -= 32
+	}
+
+	return string(strArr)
+}
+
+func WordUpper(str string) string{
+	if len(str) < 1 {
+		return str
+	}
+
+	strArr := make([]string, 0, 50)
+	if strings.Contains(str, "-") {
+		strArr = strings.Split(str, "-")
+	} else if strings.Contains(str, "_"){
+		strArr = strings.Split(str, "_")
+	}
+	if len(strArr) < 1 {
+		return str
+	}
+	for i, v := range strArr {
+		strArr[i] = Ucfirst(v)
+	}
+
+	return strings.Join(strArr, "")
+}
