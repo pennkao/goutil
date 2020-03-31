@@ -5,7 +5,7 @@ import (
 	"strings"
 )
 
-func parseTagSetting(tags reflect.StructTag) map[string]string {
+func ParseTagSetting(tags reflect.StructTag) map[string]string {
 	setting := map[string]string{}
 	for _, str := range []string{tags.Get("sql"), tags.Get("gorm")} {
 		if str == "" {
