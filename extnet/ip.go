@@ -1,6 +1,7 @@
 package extnet
 
 import (
+	"fmt"
 	"io/ioutil"
 	"net"
 	"net/http"
@@ -18,7 +19,7 @@ func IpString2Int(ip string) int {
 	return ip1_str_int<<24 | ip2_str_int<<16 | ip3_str_int<<8 | ip4_str_int
 }
 
-func IpString2Int64(ip string)int64{
+func IpString2Int64(ip string) int64 {
 	bits := strings.Split(ip, ".")
 	b0, _ := strconv.Atoi(bits[0])
 	b1, _ := strconv.Atoi(bits[1])
@@ -35,6 +36,32 @@ func IpString2Int64(ip string)int64{
 	return sum
 }
 
+//ip转换为二进制字符串
+func IP2BinStr(ip string) string {
+	str := strings.Split(ip, ".")
+	var b strings.Builder
+	for _, s := range str {
+		i, err := strconv.ParseUint(s, 10, 8)
+		if err != nil {
+			fmt.Println(err)
+		}
+		b.WriteString(fmt.Sprintf("%08b", i))
+	}
+	return b.String()
+}
+
+//192.168.10.1;  192.168.1.1/24
+func IPIsInNetWork(ip, netWork string) bool {
+	ipBinStr := IP2BinStr(ip)
+	ipr := strings.Split(netWork, "/")
+	maskLen, err := strconv.ParseUint(ipr[1], 10, 32)
+	if err != nil {
+		return false
+	}
+	netStr := IP2BinStr(ipr[0])
+	return strings.EqualFold(ipBinStr[0:maskLen], netStr[0:maskLen])
+}
+
 func IpNet2Int64(ipNet net.IP) int64 {
 	return IpString2Int64(ipNet.String())
 }
@@ -42,7 +69,6 @@ func IpNet2Int64(ipNet net.IP) int64 {
 func IpNet2Int(ipNet net.IP) int {
 	return IpString2Int(ipNet.String())
 }
-
 
 func IsPublicIP(IP net.IP) bool {
 	if IP.IsLoopback() || IP.IsLinkLocalMulticast() || IP.IsLinkLocalUnicast() {
@@ -86,7 +112,7 @@ func IsPublicIP(IP net.IP) bool {
 //	return localAddr[0:idx]
 //}
 
-func GetPublicIp() (string,error) {
+func GetPublicIp() (string, error) {
 	//有点慢
 	resp, err := http.Get("http://myexternalip.com/raw")
 	if err != nil {
@@ -134,4 +160,12 @@ func GetIPv4ByInterface(name string) ([]string, error) {
 	}
 
 	return ips, nil
+}
+
+func IsIPv4(address string) bool {
+	return strings.Count(address, ":") < 2
+}
+
+func IsIPv6(address string) bool {
+	return strings.Count(address, ":") >= 2
 }
