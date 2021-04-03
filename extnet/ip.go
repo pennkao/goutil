@@ -5,6 +5,8 @@ import (
 	"io/ioutil"
 	"net"
 	"net/http"
+	"os"
+	"os/exec"
 	"strconv"
 	"strings"
 )
@@ -168,4 +170,28 @@ func IsIPv4(address string) bool {
 
 func IsIPv6(address string) bool {
 	return strings.Count(address, ":") >= 2
+}
+
+//根据as号查询ip网段
+func IPRangeByAS(as string) ([]string, error){
+	command, err := exec.LookPath("whois")
+	if err != nil {
+		return []string{}, err
+	}
+	shell := os.Getenv("SHELL")
+	if shell == "" {
+		shell = "/bin/bash"
+	}
+	var b strings.Builder
+	b.WriteString(command)
+	p:=fmt.Sprintf(" -h whois.radb.net -- '-i origin %s' | grep ^route | awk -F ' ' '{print $2}'", as)
+	b.WriteString(p)
+	cmd := exec.Command(shell, "-c", b.String())
+	res,err:=cmd.CombinedOutput()
+	if err != nil {
+		return []string{}, err
+	}
+	allRange := strings.Split(string(res), "\n")
+	return allRange, nil
+
 }
